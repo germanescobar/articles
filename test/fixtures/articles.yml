@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+published:
+  title: Artículo publicado
+  body: Cuerpo del artículo publicado
+  published: true
+
+unpublished:
+  title: Artículo no publicado
+  body: Cuerpo del artículo no publicado
+  published: false
