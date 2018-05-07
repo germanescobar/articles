@@ -1,7 +1,19 @@
+<%= link_to "Nuevo Artículo", new_article_path %>
+
 <table>
-  <% @articles.each do |article| %>
+  <thead>
     <tr>
-      <td><%= article.title %></td>
+      <th>Titulo</th>
+      <th></th>
     </tr>
-  <% end %>
+  </thead>
+
+  <tbody>
+    <% @articles.each do |article| %>
+      <tr id="article-<%= article.id %>">
+        <td><%= article.title %></td>
+        <td><%= link_to "Eliminar", article, method: :delete %></td>
+      </tr>
+    <% end %>
+  </tbody>
 </table>
