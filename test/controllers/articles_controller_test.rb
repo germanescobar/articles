@@ -61,6 +61,14 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
     assert_not article.published
   end
 
+  test "post :create sends emails to users" do
+    sign_in users(:pedro)
+
+    assert_difference 'ActionMailer::Base.deliveries.size', User.all.count do
+      post articles_path, params: { article: { title: "A", body: "B", published: false } }
+    end
+  end
+
   test "post :create doesn't create an article if title is empty" do
     sign_in users(:pedro)
 

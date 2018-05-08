@@ -12,6 +12,9 @@ class ArticlesController < ApplicationController
   def create
     @article = Article.new(article_params)
     if @article.save
+      User.all.each do |user|
+        UserMailer.new_article(user, @article).deliver_now
+      end
       redirect_to articles_path
     else
       render :new
